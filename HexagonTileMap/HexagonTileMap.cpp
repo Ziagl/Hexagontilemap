@@ -2,10 +2,14 @@
 //
 
 #include <iostream>
+#include "Hex.h"
 
 int main()
 {
     std::cout << "Hello World!\n";
+    auto h = new Hex(0, 0, 0);
+    auto second = Hex(1, 0, -1);
+    std::cout << second.length() << "\n";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

@@ -128,7 +128,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Hex.cpp" />
     <ClCompile Include="HexagonTileMap.cpp" />
     <ClCompile Include="Layout.cpp" />
     <ClCompile Include="Orientation.cpp" />

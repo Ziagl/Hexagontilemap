@@ -14,8 +14,6 @@ enum HexDirection
 
 struct Hex
 {
-    static const std::vector<Hex> hexDirections;
-
     // stored coordinates as vector for fast vec3 computation on the GPU
     const int v[3];
   
@@ -45,7 +43,7 @@ struct Hex
 
     inline Hex neighbor(HexDirection hexDirection)
     {
-        auto other = hexDirections[hexDirection];
+        auto other = getHexDirection(hexDirection);
         return Hex(q() + other.q(), r() + other.r(), s() + other.s());
     }
 
@@ -74,5 +72,13 @@ struct Hex
     Hex operator * (int k)
     {
         return Hex(q() * k, r() * k, s() * k);
+    }
+
+    static const Hex getHexDirection(HexDirection hexDirection) {
+        static const std::vector<Hex> hexDirections = {
+            Hex(1, 0, -1), Hex(1, -1, 0), Hex(0, -1, 1),
+            Hex(-1, 0, 1), Hex(-1, 1, 0), Hex(0, 1, -1)
+        };
+        return hexDirections[hexDirection];
     }
 };

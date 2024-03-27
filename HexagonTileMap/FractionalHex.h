@@ -25,7 +25,7 @@ struct FractionalHex
         double q_diff = abs(q - h.q());
         double r_diff = abs(r - h.r());
         double s_diff = abs(s - h.s());
-        if (q_diff > r_diff and q_diff > s_diff) {
+        if (q_diff > r_diff && q_diff > s_diff) {
             q = -r - s;
         }
         else if (r_diff > s_diff) {

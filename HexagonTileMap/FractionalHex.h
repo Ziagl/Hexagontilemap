@@ -18,22 +18,23 @@ struct FractionalHex
     inline double r() { return v[1]; }
     inline double s() { return v[2]; }
 
-    Hex hexRound(FractionalHex h) {
-        int q = int(round(h.q()));
-        int r = int(round(h.r()));
-        int s = int(round(h.s()));
-        double q_diff = abs(q - h.q());
-        double r_diff = abs(r - h.r());
-        double s_diff = abs(s - h.s());
+    Hex hexRound()
+    {
+        int _q = int(round(q()));
+        int _r = int(round(r()));
+        int _s = int(round(s()));
+        double q_diff = abs(_q - q());
+        double r_diff = abs(_r - r());
+        double s_diff = abs(_s - s());
         if (q_diff > r_diff && q_diff > s_diff) {
-            q = -r - s;
+            _q = -_r - _s;
         }
         else if (r_diff > s_diff) {
-            r = -q - s;
+            _r = -_q - _s;
         }
         else {
-            s = -q - r;
+            _s = -_q - _r;
         }
-        return Hex(q, r, s);
+        return Hex(_q, _r, _s);
     }
 };

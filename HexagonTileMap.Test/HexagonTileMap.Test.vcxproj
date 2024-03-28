@@ -157,9 +157,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FractionalHex.cpp" />
     <ClCompile Include="Hex.Test.cpp" />
     <ClCompile Include="HexagonTileMap.Test.cpp" />
     <ClCompile Include="Layout.Test.cpp" />
+    <ClCompile Include="Orientation.Test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

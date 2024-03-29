@@ -135,7 +135,7 @@
   <ItemGroup>
     <ClInclude Include="FractionalHex.h" />
     <ClInclude Include="Globals.h" />
-    <ClInclude Include="HexMap.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="Hex.h" />
     <ClInclude Include="Layout.h" />
     <ClInclude Include="Orientation.h" />

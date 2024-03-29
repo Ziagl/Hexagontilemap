@@ -12,11 +12,13 @@ enum HexDirection
     SOUTHEAST = 5
 };
 
-struct Hex
+class Hex
 {
+private:
     // stored coordinates as vector for fast vec3 computation on the GPU
     const int v[3];
   
+public:
     Hex(int q, int r, int s) : v{ q, r, s }
     {
         if (q + r + s != 0)
@@ -26,55 +28,56 @@ struct Hex
     }
     
     // getter
-    inline int q() { return v[0]; }
-    inline int r() { return v[1]; }
-    inline int s() { return v[2]; }
+    inline const int q() const { return v[0]; }
+    inline const int r() const { return v[1]; }
+    inline const int s() const { return v[2]; }
 
     // computation
-    inline int length()
+    inline int length() const
     {
-        return int((abs(q()) + abs(r()) + abs(s())) / 2);
+        return int((abs(v[0]) + abs(v[1]) + abs(v[2])) / 2);
     }
 
-    inline int distance(Hex other)
+    inline int distance(const Hex& other) const
     {
-        return Hex(q() - other.q(), r() - other.r(), s() - other.s()).length();
+        return Hex(v[0] - other.v[0], v[1] - other.v[1], v[2] - other.v[2]).length();
     }
 
-    inline Hex neighbor(HexDirection hexDirection)
+    inline Hex neighbor(const HexDirection hexDirection) const
     {
         auto other = getHexDirection(hexDirection);
-        return Hex(q() + other.q(), r() + other.r(), s() + other.s());
+        return Hex(v[0] + other.v[0], v[1] + other.v[1], v[2] + other.v[2]);
     }
 
     // comparison operators
-    bool operator == (Hex other)
+    bool operator == (const Hex& other) const
     {
-        return q() == other.q() && r() == other.r() && s() == other.s();
+        return v[0] == other.v[0] && v[1] == other.v[1] && v[2] == other.v[2];
     }
 
-    bool operator != (Hex other)
+    bool operator != (const Hex& other) const
     {
-        return q() != other.q() || r() != other.r() || s() != other.s();
+        return v[0] != other.v[0] || v[1] != other.v[1] || v[2] != other.v[2];
     }
 
     // arithmetic operators
-    Hex operator + (Hex other)
+    Hex operator + (const Hex& other) const
     {
-        return Hex(q() + other.q(), r() + other.r(), s() + other.s());
+        return Hex(v[0] + other.v[0], v[1] + other.v[1], v[2] + other.v[2]);
     }
 
-    Hex operator - (Hex other)
+    Hex operator - (const Hex& other) const
     {
-        return Hex(q() - other.q(), r() - other.r(), s() - other.s());
+        return Hex(v[0] - other.v[0], v[1] - other.v[1], v[2] - other.v[2]);
     }
 
-    Hex operator * (int k)
+    Hex operator * (const int k) const
     {
-        return Hex(q() * k, r() * k, s() * k);
+        return Hex(v[0] * k, v[1] * k, v[2] * k);
     }
 
-    static const Hex getHexDirection(HexDirection hexDirection) {
+    static const Hex getHexDirection(HexDirection hexDirection)
+    {
         static const std::vector<Hex> hexDirections = {
             Hex(1, 0, -1), Hex(1, -1, 0), Hex(0, -1, 1),
             Hex(-1, 0, 1), Hex(-1, 1, 0), Hex(0, 1, -1)

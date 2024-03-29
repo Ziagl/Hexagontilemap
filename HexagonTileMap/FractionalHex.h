@@ -1,10 +1,12 @@
 #pragma once
 #include <math.h>
 
-struct FractionalHex
+class FractionalHex
 {
+private:
     const double v[3];
 
+public:
     FractionalHex(double q, double r, double s) : v{ q, r, s }
     {
         if (round(q + r + s) != 0)
@@ -14,18 +16,18 @@ struct FractionalHex
     }
 
     // getter
-    inline double q() { return v[0]; }
-    inline double r() { return v[1]; }
-    inline double s() { return v[2]; }
+    inline const double q() const { return v[0]; }
+    inline const double r() const { return v[1]; }
+    inline const double s() const { return v[2]; }
 
-    Hex hexRound()
+    Hex hexRound() const
     {
-        int _q = int(round(q()));
-        int _r = int(round(r()));
-        int _s = int(round(s()));
-        double q_diff = abs(_q - q());
-        double r_diff = abs(_r - r());
-        double s_diff = abs(_s - s());
+        int _q = int(round(v[0]));
+        int _r = int(round(v[1]));
+        int _s = int(round(v[2]));
+        double q_diff = abs(_q - v[0]);
+        double r_diff = abs(_r - v[1]);
+        double s_diff = abs(_s - v[2]);
         if (q_diff > r_diff && q_diff > s_diff) {
             _q = -_r - _s;
         }

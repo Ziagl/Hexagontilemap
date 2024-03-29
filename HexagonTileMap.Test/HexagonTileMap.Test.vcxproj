@@ -161,6 +161,7 @@
     <ClCompile Include="Hex.Test.cpp" />
     <ClCompile Include="HexagonTileMap.Test.cpp" />
     <ClCompile Include="Layout.Test.cpp" />
+    <ClCompile Include="Map.Test.cpp" />
     <ClCompile Include="Orientation.Test.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

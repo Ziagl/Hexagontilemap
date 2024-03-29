@@ -18,10 +18,10 @@
     <ClCompile Include="HexagonTileMap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Layout.cpp">
+    <ClCompile Include="Orientation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Orientation.cpp">
+    <ClCompile Include="Layout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,7 +29,7 @@
     <ClInclude Include="Hex.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HexMap.h">
+    <ClInclude Include="Map.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Point.h">

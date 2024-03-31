@@ -15,17 +15,29 @@ template <> struct std::hash<Hex>
     }
 };
 
+enum RectangleType
+{
+    POINTYTOP = 0,
+    FLATTOP = 1
+};
+
+template <typename T>
 struct Map
 {
-    std::unordered_map<Hex, float> heights;
+private:
+    std::unordered_map<Hex, T> map;
 
-    void Add(Hex coordinate, float element)
+public:
+    void add(Hex coordinate, T element)
     {
-        heights.insert({ coordinate, element });
+        map.insert({ coordinate, element });
     }
 
-    float Get(Hex coordinate)
+    T get(Hex coordinate)
     {
-        return heights.at(coordinate);
+        return map.at(coordinate);
     }
+
+    void generateHexagonMap(int size);
+    void generateRectangleMap(RectangleType type, int left, int right, int top, int bottom);
 };

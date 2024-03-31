@@ -27,24 +27,24 @@ namespace HexagonTileMapTest
 
 		TEST_METHOD(create)
 		{
-			auto map = Map();
-			map.Add(Hex(1, 0, -1), 0.5);
-			float height = map.Get(Hex(1, 0, -1));
+			auto map = Map<float>();
+			map.add(Hex(1, 0, -1), 0.5);
+			float height = map.get(Hex(1, 0, -1));
 
 			Assert::IsTrue(height - 0.5 < epsilon);
 		}
 
 		TEST_METHOD(stresstest)
 		{
-			auto map = Map();
+			auto map = Map<float>();
 
 			for (int i = 0; i < 500000; ++i)
 			{
 				auto hex = getRandomHex();
 				float height = (float)hex.q() / (hex.r() == 0 ? 1.0f : (float)hex.r());
-				map.Add(hex, height);
+				map.add(hex, height);
 
-				Assert::IsTrue(height - map.Get(hex) < epsilon);
+				Assert::IsTrue(height - map.get(hex) < epsilon);
 			}
 		}
 
